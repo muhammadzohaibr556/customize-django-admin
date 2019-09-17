@@ -1,0 +1,55 @@
+
+#header{
+    height: 50px;
+    background: #10284e;
+    color:#8DC63F;
+}
+#header a:hover{
+    color:#8DC63F;
+}
+
+#branding h1{
+    color: #fff;
+}
+
+a:link,
+a:visited{
+    color:#000;
+}
+a:link:hover,
+a:visited:hover{
+    color:#8DC63F;
+}
+#content h1{
+    color:black;
+}
+#changelist{
+    background: rgba(255, 255, 255, 0.1)
+}
+div.breadcrumbs{
+    background: #8DC63F;
+    color:#10284e;
+}
+
+div.breadcrumbs a{
+    color: #333;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    background: #8DC63F;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: rgba(0, 153, 255, 0.781);
+    color:#fff;
+}
+tbody{
+    background:rgba(155, 13, 47, 0.7);
+}
+a.section:link:hover, a.section:visited:hover {
+    color: rgb(155, 13, 47);
+   text-decoration: none;
+}
+div #content-related{
+    display: none
+}
