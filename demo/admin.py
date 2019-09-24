@@ -1,10 +1,9 @@
 from django.contrib import admin
-
-# Register your models here.
 from .models import DemoProfile
 from django.contrib.auth.models import User, Group 
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import ugettext_lazy as _ 
+from django.utils.safestring import mark_safe
 # Register your models here.
 class MyUserAdmin(UserAdmin): 
 
@@ -22,10 +21,13 @@ class DemoProfileAdmin(admin.ModelAdmin):
     #actions_selection_counter = True
     #actions_on_bottom = False
     #actions_on_top = True
-    fields = ('author','title','description', 'publish_date')
+
+    fields = ('name', 'title','description', 'image', 'admin_photo')
     list_display = [
+        'admin_photo',
         'name',
         'title',
+        'short_description',
         'publish_date'
     ]
     list_display_links=[
@@ -39,10 +41,8 @@ class DemoProfileAdmin(admin.ModelAdmin):
     ]
     date_hierarchy = 'publish_date'
     
-
-    def author (self, obj):
-        return obj.name
-
+    readonly_fields = ('publish_date','admin_photo')
+    
 admin.site.unregister(User)
 admin.site.unregister(Group)
 admin.site.register(User,MyUserAdmin)
