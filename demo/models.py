@@ -24,4 +24,9 @@ class DemoProfile(models.Model):
         return self.name
     
 
-    
+class CalculateField(models.Model):
+    a = models.IntegerField()
+    b = models.IntegerField()
+
+    def __str__(self):
+        return str(self.a)
