@@ -1,4 +1,5 @@
-
+{% extends 'admin/base.html' %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +7,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Django Admin</title>
+    {% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+    {% endblock %}
 </head>
 <body>
-    <h1>Your Current Report</h1>
+    <div id="header">
+        <div id="branding">
+        {% block branding %}<h1>Customize Django Admin</h1>{% endblock %}
+        </div>
+        {% block usertools %}
+        {% if has_permission %}
+        <div id="user-tools">
+            {% block welcome-msg %}
+                Welcome,
+                <strong>{% firstof user.get_short_name user.get_username %}</strong>.&nbsp;&nbsp;&nbsp;
+            {% endblock %}
+            <a href="{% url 'report' %}">Report</a>&nbsp;&nbsp;&nbsp;
+    
+            {% block userlinks %}
+                {% if site_url %}
+                    <a href="{{ site_url }}">View site</a>&nbsp;&nbsp;&nbsp;
+                {% endif %}
+                {% if user.is_active and user.is_staff %}
+                    {% url 'django-admindocs-docroot' as docsroot %}
+                    {% if docsroot %}
+                        <a href="{{ docsroot }}">Documentation</a> &nbsp;&nbsp;&nbsp;
+                    {% endif %}
+                {% endif %}
+                {% if user.has_usable_password %}
+                <a href="{% url 'admin:password_change' %}">Change password</a> &nbsp;&nbsp;&nbsp;
+                {% endif %}
+                <a href="{% url 'admin:logout' %}">Log out</a>
+            {% endblock %}
+        </div>
+        {% endif %}
+        {% endblock %}
+        {% block nav-global %}{% endblock %}
+    </div>
+    {% block content %}
+    <h1>View Your Currently Report</h1>
+    something that you want...
+    {% endblock %}
 </body>
 </html>
