@@ -9,14 +9,14 @@ class DemoProfile(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='photos')
     publish_date = models.DateTimeField(auto_now_add=True,editable=False)
-
+    
     # in template you can use {{ object.description|truncatewords:50 }} for short description    
     @property
     def short_description(self):
         return truncatechars(self.description, 20)
 
     def admin_photo(self):
-        return mark_safe('<img src="{}" width="200" />'.format(self.image.url))
+        return mark_safe('<img src="{}" width="100" />'.format(self.image.url))
     admin_photo.short_description = 'Image'
     admin_photo.allow_tags = True
 

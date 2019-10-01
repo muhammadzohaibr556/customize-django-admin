@@ -3,7 +3,6 @@ from .models import DemoProfile, CalculateField
 from django.contrib.auth.models import User, Group 
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import ugettext_lazy as _ 
-from django.utils.safestring import mark_safe
 # Register your models here.
 class MyUserAdmin(UserAdmin): 
 
