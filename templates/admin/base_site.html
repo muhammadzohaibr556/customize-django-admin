@@ -1,6 +1,8 @@
 {% extends 'admin/base.html' %}
 {% load static %}
-
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+{% endblock %}
 <div id="header">
     <div id="branding">
     {% block branding %}<h1>Customize Django Admin</h1>{% endblock %}
@@ -34,6 +36,3 @@
     {% endblock %}
     {% block nav-global %}{% endblock %}
 </div>
-{% block extrastyle %}
-<link rel="stylesheet" href="{% static 'css/admin.css' %}">
-{% endblock %}

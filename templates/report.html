@@ -47,7 +47,24 @@
     </div>
     {% block content %}
     <h1>View Your Currently Report</h1>
-    something that you want...
+    <table id="result_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for profile in profile %}
+            <tr>
+                <td>{{profile.id}}</td>
+                <td>{{profile.name}}</td>
+                <td><img src={{profile.image.url}} width="100" alt=""></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% endblock %}
 </body>
 </html>
